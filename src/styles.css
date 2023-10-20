@@ -12,6 +12,7 @@ div.cotainer {
 h1 {
   margin-top: 0px;
   margin-bottom: 0px;
+  text-align: center;
   font-size: 100px;
   color: rgba(175, 47, 47, 0.15);
 }
@@ -47,6 +48,7 @@ input[type="checkbox"] {
 .main ul {
   margin: 0px;
   padding: 0px;
+  list-style: none;
 }
 
 .main > u1 > li {
@@ -68,6 +70,10 @@ footer {
   background-color: white;
 }
 
+span.completed {
+  text-decoration: line-through;
+}
+
 .count,
 button {
   color: #777;
@@ -78,4 +84,5 @@ button {
   padding: 5px 10px;
   background: none;
   border: none;
+  cursor: pointer;
 }
