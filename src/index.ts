@@ -5,12 +5,7 @@ const todos = [
   new Todo(2, "期中考作業2"),
   new Todo(3, "期中考作業3"),
 ];
-setTaskFinished(todos[0], new Date());
+todos[0].setFinished(new Date());
 
 console.log("To Do:", todos);
 console.table(todos);
-
-function setTaskFinished(todo: Todo, finishDate: Date): void {
-  todo.hasFinished = true;
-  todo.finishDate = finishDate;
-}
