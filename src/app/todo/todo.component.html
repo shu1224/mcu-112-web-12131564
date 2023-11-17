@@ -1,3 +1,3 @@
-<button type="button"(click)="onsetStatus(false)">未完成</button>
-<button type="button"(click)="onsetStatus(true)">已完成</button>
-{{ content }} - {{ hasFinshed }}
+<button type="button" [disabled]="!hasFinished" (click)="onsetStatus(false)">未完成</button>
+<button type="button" [disabled]="hasFinished" (click)="onsetStatus(true)">已完成</button>
+{{ content }} - {{ hasFinished }}
