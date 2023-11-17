@@ -10,4 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class TodoComponent {
   content = '待辦事項 A'
+
+  hasFinshed = false;
+
+  onsetStatus(hasFinshed: boolean):void {
+    this.hasFinshed = hasFinshed;
+  }
 }
