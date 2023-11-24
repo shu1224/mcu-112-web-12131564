@@ -1,6 +1,8 @@
 import {
   Component,
+  EventEmitter,
   Input,
+  Output,
   booleanAttribute,
   numberAttribute,
 } from '@angular/core';
@@ -22,8 +24,10 @@ export class TodoComponent {
 
   @Input({ transform: booleanAttribute })
   hasFinished!: boolean;
+  @Output()
+  readonly hasFinishedChange = new EventEmitter();
 
-  onsetStatus(hasFinished: boolean): void {
-    this.hasFinished = hasFinished;
+  onSetStatus(hasFinished: boolean): void {
+    this.hasFinishedChange.emit(hasFinished);
   }
 }
