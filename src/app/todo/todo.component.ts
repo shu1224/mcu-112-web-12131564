@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,14 +6,16 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './todo.component.html',
-  styleUrl: './todo.component.css'
+  styleUrl: './todo.component.css',
 })
 export class TodoComponent {
-  content = '待辦事項 A'
+  @Input()
+  content!: string;
 
-  hasFinished = false;
+  @Input()
+  hasFinished!: boolean;
 
-  onsetStatus(hasFinished: boolean):void {
+  onsetStatus(hasFinished: boolean): void {
     this.hasFinished = hasFinished;
   }
 }
