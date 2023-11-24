@@ -1,4 +1,8 @@
-<button type="button" [disabled]="!hasFinished" (click)="onsetStatus(false)">未完成</button>
-<button type="button" [disabled]="hasFinished" (click)="onsetStatus(true)">已完成</button>
+<button type="button" [disabled]="!hasFinished" (click)="onsetStatus(false)">
+  未完成
+</button>
+<button type="button" [disabled]="hasFinished" (click)="onsetStatus(true)">
+  已完成
+</button>
 
-<span [class.completed]="hasFinished">{{ content }}</span>
+<span [class.completed]="hasFinished">{{ id }}. {{ content }}</span>
