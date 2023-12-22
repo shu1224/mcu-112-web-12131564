@@ -9,7 +9,7 @@ import { TaskRemoteService } from './services/task-remote.service';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(),
-     provideRouter(routes)
+    provideRouter(routes),
     { provide: TaskService, useClass: TaskRemoteService },
-    ],
+  ],
 };
