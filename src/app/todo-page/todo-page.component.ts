@@ -1,5 +1,6 @@
 import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   BehaviorSubject,
   merge,
@@ -13,11 +14,8 @@ import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
 import { Todo } from '../model/todo';
 import { TaskService } from '../services/task.service';
-import { TodoDetailComponent } from '../todo-detail/todo-detail.component';
-import { TodoFormComponent } from '../todo-form/todo-form.component';
 import { TodoListComponent } from '../todo-list/todo-list.component';
 import { TodoSearchComponent } from '../todo-search/todo-search.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-page',
@@ -28,7 +26,6 @@ import { Router } from '@angular/router';
     HeaderComponent,
     TodoListComponent,
     TodoSearchComponent,
-    TodoFormComponent,
     FooterComponent,
   ],
   templateUrl: './todo-page.component.html',
@@ -36,15 +33,10 @@ import { Router } from '@angular/router';
 })
 export class TodoPageComponent implements OnInit {
   taskService = inject(TaskService);
-
   tasks$!: Observable<Todo[]>;
-
   readonly search$ = new BehaviorSubject<string | null>(null);
-
   readonly refresh$ = new Subject<void>();
-
   readonly router = inject(Router);
-
   ngOnInit(): void {
     this.tasks$ = merge(
       this.refresh$.pipe(startWith(undefined)),
@@ -52,24 +44,21 @@ export class TodoPageComponent implements OnInit {
     ).pipe(switchMap(() => this.taskService.getAll(this.search$.value)));
   }
 
-  onSave(task: Todo): void {
-    this.taskService.add(task).subscribe(() => this.refresh$.next());
+  onAdd(): void {
+    this.router.navigate(['todo-form']);
   }
 
   onRemove(id: number): void {
     this.taskService.remove(id).subscribe(() => this.refresh$.next());
   }
-
   onStateChange({ task, state }: { task: Todo; state: boolean }): void {
     this.taskService
       .updateState(task, state)
       .subscribe(() => this.refresh$.next());
   }
-
   onSearch(content: string | null): void {
     this.search$.next(content);
   }
-
   onView(id: number): void {
     this.router.navigate(['todo', id]);
   }
