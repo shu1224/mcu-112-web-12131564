@@ -17,6 +17,7 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoSearchComponent } from './todo-search/todo-search.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ import { TodoSearchComponent } from './todo-search/todo-search.component';
     NgIf,
     HeaderComponent,
     AsyncPipe,
+    NavBarComponent,
     TodoListComponent,
     TodoDetailComponent,
     TodoSearchComponent,
